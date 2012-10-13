@@ -6,9 +6,14 @@ import sys
 
 
 def get_syllables(word):
-    """Return the syllables of a word, as a list."""
+    """Return the syllables of a word, as a list. Because
+    Hyphenator.syllables() returns [] for words of length <= 3, we have to
+    check for the empty list before returning."""
     hyph = hyphen.Hyphenator('en_US')
-    return hyph.syllables(unicode(word))
+    syllables = hyph.syllables(unicode(word))
+    if not syllables:
+        syllables.append(unicode(word))
+    return syllables
 
 
 def get_num_syllables(word):
