@@ -1,0 +1,25 @@
+HAIKUBOT
+========
+
+An artful automaton with a penchant for poetry.
+
+
+REQUIREMENTS
+------------
+* python
+* an appreciation for the developing talents of a sensitive young poet-bot
+
+
+USAGE
+-----
+HaikuBot is shy and performs only when prompted from the command line:
+
+    $ ./haikubot.py
+    chary self-concept
+    ladanum hazelnut strut
+    postanesthetic
+
+Read each of his poems thoughtfully. When appropriate, stroke your chin, cluck
+your tongue, and look contemplative. You might also light a cigarette, but then
+get so swept up in the startling fury of HaikuBot's imagery that you forget to
+smoke it.
