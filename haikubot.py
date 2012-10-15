@@ -11,6 +11,13 @@ WORD_LIST = 'hyph-dict'
 LIST_LENGTH = 187175 # we're cheating here -- we know the length of the list
 
 
+def is_acronym(word):
+    """Return True if the word is an acronym, False if... well, you know."""
+    if re.match(r'^[A-Z]+$', word):
+        return True
+    return False
+
+
 def get_syllables(word):
     """Return a list of syllables in the given word."""
     split_list = re.split('\W', word)
@@ -42,7 +49,7 @@ def get_haiku_line(syllables):
     while(remaining_syllables > 0):
         word = get_random_word(WORD_LIST, LIST_LENGTH)
         syl = get_num_syllables(word)
-        if syl <= remaining_syllables: # if the word's too long, ruh roh
+        if syl <= remaining_syllables and not is_acronym(word):
             remaining_syllables -= syl
             line += clean_word(word) + ' '
     return line.strip() # kill remaining whitespace
