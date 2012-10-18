@@ -12,9 +12,10 @@ class HaikuBot
     @words.map! { |x| x.chomp } # readlines preserves newlines :(
   end
 
-  # Return a full haiku of the 5, 7, 5 variety
-  def get_haiku
-    "#{get_haiku_line(5)}\n#{get_haiku_line(7)}\n#{get_haiku_line(5)}\n"
+  # Return a full haiku of the 5, 7, 5 variety. Separate each line with
+  # specified delimiter.
+  def get_haiku(d = "\n")
+    "#{get_haiku_line(5)}#{d}#{get_haiku_line(7)}#{d}#{get_haiku_line(5)}#{d}"
   end
 
   # Return a line of beautiful poetry with the specified number of syllables
