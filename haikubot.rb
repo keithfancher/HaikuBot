@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 WORD_LIST = 'hyph-dict'
-SEP = 165.chr # separates syllables in the dict
+SEP = '•' # separates syllables in the dict
 
 class HaikuBot
 
@@ -41,9 +41,11 @@ class HaikuBot
   end
 
   # Return an array of syllables in the given word, assuming each syllable is
-  # properly split in our dictionary
+  # properly split in our dictionary. Split on non-words, which of course
+  # includes hyphens, spaces, and our separator.
+  # FIXME: apostraphes also split words, and shouldn't!
   def get_syllables(word)
-    word.split(/\W/)
+    word.split(/\W/).reject { |x| x.empty? } # kill resulting empty strings
   end
 
   # Return number of syllables in a word
