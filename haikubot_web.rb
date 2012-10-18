@@ -6,5 +6,5 @@ require 'haikubot'
 get '/' do
   bot = HaikuBot.new('hyph-dict', 165.chr)
   haiku = bot.get_haiku('<br />')
-  erb :index
+  erb :index, :locals => { :haiku => haiku }
 end
