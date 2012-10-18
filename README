@@ -6,7 +6,7 @@ An artful automaton with a penchant for poetry.
 
 REQUIREMENTS
 ------------
-* python
+* ruby 1.8
 * an appreciation for the developing talents of a sensitive young poet-bot
 
 
@@ -14,7 +14,7 @@ USAGE
 -----
 HaikuBot is shy and performs only when prompted from the command line:
 
-    $ ./haikubot.py
+    $ ./haikubot.rb
     chary self-concept
     ladanum hazelnut strut
     postanesthetic
