@@ -18,9 +18,6 @@
 require 'sinatra'
 require 'haikubot'
 
-WORD_LIST = 'hyph-dict'
-SEP = '•'
-
 get '/' do
   bot = HaikuBot.new(WORD_LIST, SEP)
   haiku = bot.get_haiku('<br />')
