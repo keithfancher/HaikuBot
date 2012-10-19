@@ -6,8 +6,9 @@ An artful automaton with a penchant for poetry.
 
 REQUIREMENTS
 ------------
-* ruby 1.8
-* an appreciation for the developing talents of a sensitive young poet-bot
+* Ruby 1.8.x
+* Sinatra (if you use the web interface)
+* An appreciation for the developing talents of a sensitive young poet-bot
 
 
 USAGE
@@ -23,3 +24,19 @@ Read each of his poems thoughtfully. When appropriate, stroke your chin, cluck
 your tongue, and look contemplative. You might also light a cigarette, but then
 get so swept up in the startling fury of HaikuBot's imagery that you forget to
 smoke it.
+
+
+WEB INTERFACE
+-------------
+There's also a web interface! It's still a work-in-progress, but if you have
+Sinatra installed you can play with it:
+
+    $ ./haikubot_web.rb
+
+Then navigate to localhost:4567 in your browser and be AMAZED. Note: you can
+also use the web interface to get plaintext haiku with curl:
+
+    $ curl localhost:4567/raw/
+    fetishist fungal
+    huntress undancing nutmeat
+    smallclothes otter shrew
