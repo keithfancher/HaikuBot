@@ -24,7 +24,7 @@ get '/' do
   erb :index, :locals => { :haiku => haiku }
 end
 
-get '/raw/' do
+get '/raw/?' do
   bot = HaikuBot.new(WORD_LIST, SEP)
   bot.get_haiku
 end
