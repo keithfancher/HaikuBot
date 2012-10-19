@@ -14,7 +14,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 require 'test/unit'
+require 'rack/test'
 require 'haikubot'
+require 'haikubot_web'
 
 class TestGetSyllables < Test::Unit::TestCase
 
@@ -89,4 +91,33 @@ class TestAcronym < Test::Unit::TestCase
     assert_equal(false, @bot.send(:acronym?, word))
   end
 
+end
+
+class TestWebInterface < Test::Unit::TestCase
+  include Rack::Test::Methods
+
+  def app
+    Sinatra::Application
+  end
+
+  def test_index_is_okey_dokey
+    get '/'
+    assert_equal(200, last_response.status)
+    assert(last_response.body.include?('HaikuBot says'))
+  end
+
+  def test_raw_haiku_are_okey_dokey
+    get '/raw/'
+    assert_equal(200, last_response.status)
+  end
+
+  def test_raw_haiku_no_slash
+    get '/raw'
+    assert_equal(200, last_response.status)
+  end
+
+  def test_404
+    get '/ohmygodthisisgoingtobethebestpageeverijustknowit'
+    assert_equal(404, last_response.status)
+  end
 end
