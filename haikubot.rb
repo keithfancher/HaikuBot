@@ -41,11 +41,10 @@ class HaikuBot
   end
 
   # Return an array of syllables in the given word, assuming each syllable is
-  # properly split in our dictionary. Split on non-words, which of course
-  # includes hyphens, spaces, and our separator.
-  # FIXME: apostraphes also split words, and shouldn't!
+  # properly split in our dictionary
   def get_syllables(word)
-    word.split(/\W/).reject { |x| x.empty? } # kill resulting empty strings
+    delimiters = /[#{@separator}\s\-]/ # separator, whitespace, hyphens
+    word.split(delimiters).reject { |x| x.empty? } # kill empty strings
   end
 
   # Return number of syllables in a word

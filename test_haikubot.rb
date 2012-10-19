@@ -31,7 +31,7 @@ class TestGetSyllables < Test::Unit::TestCase
     assert_equal(result, @bot.send(:get_syllables, word))
   end
 
-  def test_with_apostraphes
+  def test_with_apostrophes
     word = "can't"
     result = ["can't"]
     assert_equal(result, @bot.send(:get_syllables, word))
