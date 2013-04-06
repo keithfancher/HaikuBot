@@ -40,7 +40,7 @@ class HaikuBot
     while remaining_syllables > 0
       word = get_random_word
       syl = get_num_syllables(word)
-      if syl <= remaining_syllables and not acronym?(word) and has_vowels?(word)
+      if syl <= remaining_syllables and not acronym?(word) and has_vowels?(word) and not has_numbers?(word)
         remaining_syllables -= syl
         line << clean_word(word) + ' '
       end
@@ -58,6 +58,11 @@ class HaikuBot
   # Return true if word has vowels! What kind of word doesn't have vowels?!
   def has_vowels?(word)
     word.match(/[aeiouy]/i) ? true : false
+  end
+
+  # You guessed it...
+  def has_numbers?(word)
+    word.match(/[0-9]/) ? true : false
   end
 
   # Return an array of syllables in the given word, assuming each syllable is

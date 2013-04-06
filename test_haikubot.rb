@@ -111,6 +111,24 @@ class TestHasVowels < Test::Unit::TestCase
 
 end
 
+class TestHasNumbers < Test::Unit::TestCase
+
+  def setup
+    @bot = HaikuBot.new(WORD_LIST, SEP)
+  end
+
+  def test_no_numbers_returns_false
+    word = 'BCDZ-zz ppB•wqGb'
+    assert_equal(false, @bot.send(:has_numbers?, word))
+  end
+
+  def test_has_numbers_returns_true
+    word = 'B0CDZ-zz paB•wq9Gb'
+    assert_equal(true, @bot.send(:has_numbers?, word))
+  end
+
+end
+
 class TestWebInterface < Test::Unit::TestCase
   include Rack::Test::Methods
 
