@@ -86,8 +86,14 @@ class TestAcronym < Test::Unit::TestCase
     assert_equal(false, @bot.send(:acronym?, word))
   end
 
-  def test_combo_returns_false
-    word = 'place-kick•er ACRO'
+  def test_combo_returns_true
+    word = 'place-kick•er ACRO' # disallow acronyms in the phrase at all!
+    assert_equal(true, @bot.send(:acronym?, word))
+  end
+
+  def test_with_syallable_separator
+    # make sure that, when splitting on words, we're not splitting on syllables
+    word = 'A•ble'
     assert_equal(false, @bot.send(:acronym?, word))
   end
 

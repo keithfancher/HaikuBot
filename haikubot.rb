@@ -52,7 +52,8 @@ class HaikuBot
 
   # Return true if the word is an acronym, false otherwise
   def acronym?(word)
-    word.match(/^[A-Z]+$/) ? true : false
+    # Want to return false if *any* word in the phrase is an acronym, hence \b:
+    clean_word(word).match(/\b[A-Z]+\b/) ? true : false
   end
 
   # Return true if word has vowels! What kind of word doesn't have vowels?!
