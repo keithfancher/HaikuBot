@@ -93,6 +93,24 @@ class TestAcronym < Test::Unit::TestCase
 
 end
 
+class TestHasVowels < Test::Unit::TestCase
+
+  def setup
+    @bot = HaikuBot.new(WORD_LIST, SEP)
+  end
+
+  def test_no_vowels_returns_false
+    word = 'BCDZ-zz ppB•wqGb'
+    assert_equal(false, @bot.send(:has_vowels?, word))
+  end
+
+  def test_has_vowels_returns_true
+    word = 'BCDZ-zz paB•wqGb'
+    assert_equal(true, @bot.send(:has_vowels?, word))
+  end
+
+end
+
 class TestWebInterface < Test::Unit::TestCase
   include Rack::Test::Methods
 

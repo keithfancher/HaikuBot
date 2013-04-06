@@ -40,7 +40,7 @@ class HaikuBot
     while remaining_syllables > 0
       word = get_random_word
       syl = get_num_syllables(word)
-      if syl <= remaining_syllables and not acronym?(word)
+      if syl <= remaining_syllables and not acronym?(word) and has_vowels?(word)
         remaining_syllables -= syl
         line << clean_word(word) + ' '
       end
@@ -53,6 +53,11 @@ class HaikuBot
   # Return true if the word is an acronym, false otherwise
   def acronym?(word)
     word.match(/^[A-Z]+$/) ? true : false
+  end
+
+  # Return true if word has vowels! What kind of word doesn't have vowels?!
+  def has_vowels?(word)
+    word.match(/[aeiouy]/i) ? true : false
   end
 
   # Return an array of syllables in the given word, assuming each syllable is
